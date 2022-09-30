@@ -16,7 +16,7 @@ const GoodsItem = (props) => {
                 />
                 <div className='card-body'>
                     <h5 className='card-title'>{name}</h5>
-                    <p className='card-text'>Цена: {price} руб.</p>
+                    <p className='card-text'>Ціна: {price} грн.</p>
                     <button
                         className='btn btn-primary'
                         onClick={() =>
@@ -27,7 +27,7 @@ const GoodsItem = (props) => {
                             })
                         }
                     >
-                        Купить
+                        Купити
                     </button>
                 </div>
             </div>

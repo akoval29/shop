@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Header from './header';
+
 import BasketList from './BasketList';
 import GoodsList from './GoodsList';
 import Search from './Search';
@@ -65,6 +67,8 @@ const App = () => {
     };
 
     return (
+        <>
+        <Header/>
         <div className='App'>
             <div className='container'>
                 <Search
@@ -81,6 +85,7 @@ const App = () => {
                 />
             </div>
         </div>
+        </>
     );
 }
 
