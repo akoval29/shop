@@ -4,13 +4,19 @@ import { ShoppingBasket } from "@mui/icons-material";
 
 function Header() {
     return(
-        <AppBar>
+        <AppBar position="static">
             <Toolbar>
-                <Typography>
+                <Typography
+                    variant='h6'
+                    component='span'
+                    sx={{flexGrow: 1}}
+                >
                     MUI Shop
                 </Typography>
 
-                <IconButton>
+                <IconButton
+                    color='inherit'
+                >
                     <ShoppingBasket/>
                 </IconButton>
             </Toolbar>

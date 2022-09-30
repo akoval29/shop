@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import Header from './header';
-
 import BasketList from './BasketList';
 import GoodsList from './GoodsList';
 import Search from './Search';
 
 import { goods } from '../data/goods';
+import { Container } from '@mui/system';
 
 const App = () => {
     const [order, setOrder] = useState([]);
@@ -68,9 +68,12 @@ const App = () => {
 
     return (
         <>
-        <Header/>
-        <div className='App'>
-            <div className='container'>
+            <Header/>
+            <Container
+                sx={{
+                    mt: '2rem'
+                }}
+            >
                 <Search
                     value={search}
                     onChange={handleChange}
@@ -83,8 +86,7 @@ const App = () => {
                     order={order}
                     setOrder={removeFromOrder}
                 />
-            </div>
-        </div>
+            </Container>
         </>
     );
 }
