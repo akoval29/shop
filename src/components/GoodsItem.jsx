@@ -1,24 +1,37 @@
-import React from 'react';
+import {Grid, Card, CardMedia, CardContent, CardActions, Typography, Button} from "@mui/material";
+// import Grid from "@mui/material/Grid";
+// import Card from "@mui/material/Card";
+// import CardMedia from "@mui/material/CardMedia";
+
 
 const GoodsItem = (props) => {
-    const { name, price, setOrder } = props;
+    const { name, price, setOrder, poster } = props;
 
     return (
-        <div className='col-12 col-md-6 px-md-2'>
-            <div className='card'>
-                <img
-                    src={`https://via.placeholder.com/300x150.png?text=${name.slice(
-                        0,
-                        12
-                    )}`}
-                    className='card-img-top'
+        <Grid item xs={12} md={4}>
+            <Card sx={{height: '100%'}}>
+                <CardMedia
+                    image={poster}
+                    component='img'
+                    title={name}
                     alt={name}
+                    sx={{height: 140}}
                 />
-                <div className='card-body'>
-                    <h5 className='card-title'>{name}</h5>
-                    <p className='card-text'>Ціна: {price} грн.</p>
-                    <button
-                        className='btn btn-primary'
+
+                <CardContent>
+                    <Typography
+                        variant='h6'
+                        component='h3'
+
+                        >{name}
+                    </Typography>    
+                    <Typography variant='body1'> Ціна: {price} грн.</Typography>
+                </CardContent>
+                <CardActions>
+
+                </CardActions>
+                    <Button
+                        variant="outlined"
                         onClick={() =>
                             setOrder({
                                 id: props.id,
@@ -28,10 +41,12 @@ const GoodsItem = (props) => {
                         }
                     >
                         Купити
-                    </button>
-                </div>
-            </div>
-        </div>
+                    </Button>
+                
+            </Card>
+        </Grid>
+
+        
     );
 };
 

@@ -8,8 +8,11 @@ const Search = (props) => {
         label="search"
         type='search' 
         value={value} 
-        onChange={onChange} 
-
+        onChange={onChange}
+        fullWidth 
+        sx={{
+            mb:'2rem'
+        }}
     />;
     
 };
