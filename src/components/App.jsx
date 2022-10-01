@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Busket from './Busket';
 import Header from './header';
 import BasketList from './BasketList';
 import GoodsList from './GoodsList';
@@ -12,6 +13,7 @@ const App = () => {
     const [order, setOrder] = useState([]);
     const [search, setSearch] = useState('');
     const [products, setProducts] = useState(goods);
+    const [isCardOpen, setCardOpen] = useState(false);
 
     const handleChange = (e) => {
         if (!e.target.value) {
@@ -21,10 +23,12 @@ const App = () => {
         }
 
         setSearch(e.target.value);
+        
         setProducts(
             products.filter((good) =>
                 good.name.toLowerCase().includes(e.target.value.toLowerCase())
-            ))
+            )
+        )
     };
 
     const addToOrder = (goodsItem) => {
@@ -68,12 +72,10 @@ const App = () => {
 
     return (
         <>
-            <Header/>
-            <Container
-                sx={{
-                    mt: '2rem'
-                }}
-            >
+            <Header
+                handleCard={() => setCardOpen(true)}
+            />
+            <Container sx={{mt: '2rem'}} >
                 <Search
                     value={search}
                     onChange={handleChange}
@@ -87,6 +89,12 @@ const App = () => {
                     setOrder={removeFromOrder}
                 />
             </Container>
+            <Busket
+                order={order}
+                cardOpen={isCardOpen}
+                removeFromOrder={removeFromOrder}
+                closeCard={() => setCardOpen(false)}
+            />
         </>
     );
 }
