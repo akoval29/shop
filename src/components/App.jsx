@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 import Busket from './Busket';
-import Header from './header';
+import Header from './Header';
 import BasketList from './BasketList';
 import GoodsList from './GoodsList';
 import Search from './Search';
+import SnackBar from './SnackBar';
 
 import { goods } from '../data/goods';
 import { Container } from '@mui/system';
@@ -14,6 +15,7 @@ const App = () => {
     const [search, setSearch] = useState('');
     const [products, setProducts] = useState(goods);
     const [isCardOpen, setCardOpen] = useState(false);
+    const [isSnackOpen, setSnackOpen] = useState(false);
 
     const handleChange = (e) => {
         if (!e.target.value) {
@@ -64,6 +66,7 @@ const App = () => {
                 ],
             );
         }
+        setSnackOpen(true);
     };
 
     const removeFromOrder = (goodsItem) => {
@@ -74,6 +77,7 @@ const App = () => {
         <>
             <Header
                 handleCard={() => setCardOpen(true)}
+                orderLenght={order.length}
             />
             <Container sx={{mt: '2rem'}} >
                 <Search
@@ -94,6 +98,10 @@ const App = () => {
                 cardOpen={isCardOpen}
                 removeFromOrder={removeFromOrder}
                 closeCard={() => setCardOpen(false)}
+            />
+            <SnackBar
+                isSnackOpen={isSnackOpen}
+                snackHandleClose={() => setSnackOpen(false)}
             />
         </>
     );
